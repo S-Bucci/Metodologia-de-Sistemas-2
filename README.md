@@ -1,5 +1,14 @@
 # Metodologia-de-Sistemas-2
 
+
+### Integrantes:
+Rodrigo Sisko, Simón Bucci, Josué Chazarreta y Santino Gullacci
+
+
+### Temática:
+Sistema de gestión de viajes
+
+
 ### <u>Patrones elegidos para realizar el proyecto</u>
 
 ### *Patrón Creacional*

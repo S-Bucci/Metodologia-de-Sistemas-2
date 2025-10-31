@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Aplicación web full-stack con React, Express y PostgreSQL" />
+  <meta name="author" content="Tu Nombre" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Mi Aplicación Web" />
+  <meta property="og:description" content="Sistema web moderno construido con tecnologías actuales" />
+  <meta property="og:image" content="%PUBLIC_URL%/og-image.png" />
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:title" content="Mi Aplicación Web" />
+  <meta property="twitter:description" content="Sistema web moderno construido con tecnologías actuales" />
+  <meta property="twitter:image" content="%PUBLIC_URL%/twitter-image.png" />
+
+  <!-- Apple Touch Icon -->
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  
+  <!-- Manifest for PWA -->
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  
+  <!-- Preconnect to external domains for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome for icons (opcional) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <title>Mi Aplicación Web</title>
+  
+  <!-- Inline CSS para loading spinner y optimizaciones iniciales -->
+  <style>
+    /* Loading spinner mientras carga React */
+    .loading-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(135deg, #667eea 0%, #3498db 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      border-top: 4px solid #ffffff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
+
+    .loading-text {
+      color: white;
+      font-size: 18px;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .loading-subtitle {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 14px;
+      margin-top: 8px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Fade out animation cuando React toma control */
+    .loading-container.fade-out {
+      opacity: 0;
+      transition: opacity 0.5s ease-out;
+    }
+  </style>
+</head>
+
+<body data-env="development">
+
+  <!-- Loading screen mientras React carga -->
+  <div id="loading" class="loading-container">
+    <div class="loading-spinner"></div>
+    <div class="loading-text">Cargando...</div>
+  </div>
+
+  <!-- Contenedor principal donde React se monta -->
+  <div id="root"></div>
+
+  <!-- Script para ocultar loading cuando React esté listo -->
+  <script>
+    // Ocultar loading screen cuando React tome control
+    function hideLoading() {
+      const loadingElement = document.getElementById('loading');
+      if (loadingElement) {
+        loadingElement.classList.add('fade-out');
+        setTimeout(() => {
+          loadingElement.style.display = 'none';
+        }, 500);
+      }
+    }
+
+    // Detectar cuando React ha montado
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'childList') {
+          const root = document.getElementById('root');
+          if (root && root.children.length > 0) {
+            hideLoading();
+            observer.disconnect();
+          }
+        }
+      });
+    });
+
+    // Observar cambios en el div root
+    const rootElement = document.getElementById('root');
+    if (rootElement) {
+      observer.observe(rootElement, { childList: true });
+    }
+
+    // Fallback: ocultar loading después de 10 segundos máximo
+    setTimeout(hideLoading, 10000);
+
+    // Console message para desarrolladores
+    console.log(`
+    🚀 Aplicación Full-Stack
+    ========================
+    Frontend: React 18
+    Backend: Express + Sequelize
+    Base de datos: PostgreSQL
+    Containerización: Docker
+    
+    Endpoints disponibles:
+    • Frontend: http://localhost:3000
+    • API: http://localhost:3001/api
+    • pgAdmin: http://localhost:5050
+    • Docs: Ver README.md
+    
+    Happy coding! 🎉
+    `);
+  </script>
+</body>
+</html>

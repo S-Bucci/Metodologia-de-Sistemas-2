@@ -26,8 +26,6 @@ _(backend/models/PackageBuilder.js)_
 - **PackageDirector.js**: Dirige el proceso de construcción. Define diferentes formas de armar un paquete (por ejemplo, un paquete básico, uno completo, uno con servicios adicionales, etc...).
 _(backend/models/PackageDirector.js)_
 
-Se actualizó _packages.controller.js_ para que utilice estas clases al momento de crear nuevos paquetes, garantizando que la creación del objeto siga el proceso definido por el **Builder**.
-
 
 ### *Patrón Estructural*
 El patrón estructural elegido es el <font size=4>**`Facade`**</font>. En la teoría dice que la motivación para 
@@ -38,6 +36,13 @@ En nuestro proyecto se puede aplicar por ejemplo, para procesar los pagos, verif
 la disponibilidad de vuelos, verificar disponibilidad de hoteles, y más. 
 
 Por esto consideramos que el patrón <font size=4>**`Facade`**</font> es el mejor para el proyecto. 
+
+Para aplicar correctamente el patrón **Facade** incorporamos la carpeta **services** y un nuevo archivo:
+
+- **packages.facade.js**: centraliza y simplifica toda la lógica de gestión de paquetes, permitiendo que el controlador interactúe con una única interfaz sin manejar directamente los procesos internos.
+_(backend/services/package.facade.js)_
+
+Se actualizó _packages.controller.js_ para que delegue toda la gestión de paquetes al PackageFacade. Permitiendo que el controlador trabaje con una interfaz simple mientras el Facade se encarga internamente de usar el Builder, garantizando que los paquetes se creen y actualicen siguiendo el proceso definido.
 ### *Patrón de Comportamiento*
 
 El patrón de comportamiento elegido es el <font size=4>**`Observer`**</font>. La teoría dice que la 

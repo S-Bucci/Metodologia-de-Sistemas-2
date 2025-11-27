@@ -6,11 +6,14 @@ import Banner from "../../components/layout/Banner"
 import ProductCard from "../../components/layout/ProductCard"
 import Data from "../../components/layout/Data"
 import Footer from "../../components/layout/Footer"
+import PriceNotification from "../../components/common/PriceNotification"
 import { getAllPackages } from "../../services/packageService"
+import { usePriceChanges } from "../../utils/usePriceChanges"
 
 function Home() {
   const navigate = useNavigate()
   const [paquetes, setPaquetes] = useState([])
+  const { priceChanges, dismissChanges } = usePriceChanges(paquetes)
 
   useEffect(() => {
     const fetchPackages = async () => {
@@ -33,6 +36,7 @@ function Home() {
   return (
     <>
       <Header />
+      <PriceNotification changes={priceChanges} onDismiss={dismissChanges} />
       <Banner />
       <section className="productos-section">
         <div className="container">

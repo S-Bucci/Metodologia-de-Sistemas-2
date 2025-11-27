@@ -1,0 +1,149 @@
+.price-notification-container {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  z-index: 1000;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.price-notification {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  max-width: 400px;
+  overflow: hidden;
+  border-left: 4px solid #4CAF50;
+}
+
+.notification-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.notification-icon {
+  font-size: 24px;
+}
+
+.notification-header h3 {
+  flex: 1;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.notification-body {
+  padding: 15px 20px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.price-change-item {
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.price-change-item:last-child {
+  border-bottom: none;
+}
+
+.package-title {
+  display: block;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.price-comparison {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.old-price {
+  color: #999;
+  text-decoration: line-through;
+  font-size: 14px;
+}
+
+.arrow {
+  color: #666;
+}
+
+.new-price {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.new-price.decreased {
+  color: #4CAF50;
+}
+
+.new-price.increased {
+  color: #f44336;
+}
+
+.badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.badge.discount {
+  background: #4CAF50;
+  color: white;
+}
+
+.badge.increase {
+  background: #ff9800;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .price-notification-container {
+    right: 10px;
+    left: 10px;
+    top: 70px;
+  }
+
+  .price-notification {
+    max-width: none;
+  }
+}

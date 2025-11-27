@@ -60,4 +60,4 @@ proyecto.
 X espacio para explicar observerPattern
 
 Las notificaciones de cambio de precio se implementaron en la pagina principal (home) con **PriceNotification.js** y **usePriceChanges.js**.
-Funciona de la siguiente manera. El usuario entra a la pagina principal, luego el administrador cambia el precio uno o varios paquetes desde el dashboard, los observers son notificados por el backend, y finalmente el usuario recarga, ahi **usePriceChanges.js** detecta los cambios y en la pagina principal que ve el usuario se muestra una notificación con los paquetes que cambiaron de precio.
+Funciona de la siguiente manera. El usuario entra a la pagina principal, luego el administrador cambia el precio uno o varios paquetes desde el dashboard, los observers son notificados por el backend, y finalmente el usuario recarga la página principal, ahi **usePriceChanges.js** detecta los cambios y en la pagina principal que ve el usuario se muestra una notificación con los paquetes que cambiaron de precio.

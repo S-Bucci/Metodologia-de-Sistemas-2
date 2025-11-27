@@ -6,7 +6,11 @@ Rodrigo Sisko, Simón Bucci, Josué Chazarreta y Santino Gullacci
 
 
 ### Temática:
-Sistema de gestión de viajes
+Sistema de gestión de viajes: La app web permite dos modos: usuario y admin (cómo entrar a cada uno explicado al final de este readme). 
+
+Como usuario se visualiza una página principal con 3 paquetes turísticos, donde se puede elegir ver más detalles acerca de alguno de ellos. Una vez seleccionado alguno de los paquetes, es posible hacer una reservación con datos personales. 
+
+El modo admin (hacer el login para poder realizar cambios) muestra un dashboard que permite ver los paquetes (y agregar más, borrarlos o editarlos) o las reservaciones (que también permite eliminarlas). También tiene un botón para actualizar los precios de todos los paquetes. Si se hicieron cambios en los precios, al refrescar la página y entrar como usuario debería llegar una notificación con dicha información.
 
 
 ### <u>Patrones elegidos para realizar el proyecto</u>
@@ -57,7 +61,61 @@ descuento.
 Por esto consideramos que el patrón <font size=4>**`Observer`**</font> es el que más se adapta al 
 proyecto.
 
-X espacio para explicar observerPattern
+La forma en la que aplicamos el patrón <font size=4>**`Observer`**</font> fue creando una carpeta observerPattern con un priceSubject.js que notifica a los observadores cacheObserver.js y logObserver.js (no implementados del todo) y databaseObserver.js (implementado).
 
 Las notificaciones de cambio de precio se implementaron en la pagina principal (home) con **PriceNotification.js** y **usePriceChanges.js**.
 Funciona de la siguiente manera. El usuario entra a la pagina principal, luego el administrador cambia el precio uno o varios paquetes desde el dashboard, los observers son notificados por el backend, y finalmente el usuario recarga la página principal, ahi **usePriceChanges.js** detecta los cambios y en la pagina principal que ve el usuario se muestra una notificación con los paquetes que cambiaron de precio.
+
+
+
+# Sistema Web Full-Stack con Docker - PATAGONIA TRIP
+
+### Servicios del Sistema
+
+| Servicio | Tecnología | Puerto | Función |
+|----------|------------|--------|---------|
+| **Frontend** | React 18 | 3000 | Interfaz de usuario |
+| **Backend** | Express + Sequelize | 3001 | API REST |
+| **Database** | PostgreSQL 15 | 5432 | Base de datos principal |
+| **pgAdmin** | pgAdmin 4 | 5050 | Administración de BD |
+
+---
+
+### Primera Construcción
+```bash
+# Situarse en la carpeta Proyecto
+cd Proyecto
+
+# Construir todas las imágenes
+docker-compose build
+
+# Inicializar base de datos y servicios
+docker-compose up -d
+```
+
+---
+
+## Ejecución del Sistema
+
+### Comandos Principales
+```bash
+# Iniciar todos los servicios
+docker-compose up
+
+# Detener servicios
+docker-compose down
+
+# Detener servicios y borrar cambios hechos
+docker-compose down -v
+
+```
+
+### URLs de Acceso
+- **Frontend:** http://localhost:3000
+- **Frontend - Admin:** http://localhost:3000/admin admin@example.com admin123
+- **Backend API:** http://localhost:3001/api
+- **Health Check:** http://localhost:3001/health
+- **pgAdmin 4:** http://localhost:5050 (user: app_user, contraseña: app_password)
+- **Base de datos:** http://localhost:5432 
+
+---

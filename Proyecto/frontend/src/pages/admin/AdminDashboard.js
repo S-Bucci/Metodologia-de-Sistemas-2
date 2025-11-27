@@ -93,6 +93,9 @@ function AdminDashboard() {
             <button className="boton-accion" onClick={() => navigate("/admin/reservaciones")}>
               Ver Reservaciones
             </button>
+            <button className="boton-accion" onClick={() => navigate("/admin/precios")}>
+              Actualizar Precios
+            </button>
           </div>
         </div>
       </div>

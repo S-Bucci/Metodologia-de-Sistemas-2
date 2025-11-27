@@ -81,26 +81,47 @@ Funciona de la siguiente manera. El usuario entra a la pagina principal, luego e
 
 ---
 
-### Primera Construcción
-```bash
-# Situarse en la carpeta Proyecto
-cd Proyecto
+### Prerrequisitos
+- Docker Desktop
+- Docker Compose
+- Git
 
-# Construir todas las imágenes
+### Primera Construcción y Ejecución del Sistema
+
+```bash
+# Clonar repositorio
+git clone https://github.com/S-Bucci/Metodologia-de-Sistemas-2
+
+# Situarse en la carpeta Proyecto
+cd Metodologia-de-Sistemas-2/Proyecto
+
+# Construir todas las imágenes (solo debe hacerse la primera vez. Si ya se hizo, saltearse este punto)
 docker-compose build
 
 # Inicializar base de datos y servicios
 docker-compose up -d
+
+# Detener servicios
+docker-compose down
+
+# Detener servicios y borrar cambios hechos
+docker-compose down -v
 ```
 
 ---
 
-## Ejecución del Sistema
+
 
 ### Comandos Principales
 ```bash
-# Iniciar todos los servicios
+# Iniciar todos los servicios en primer plano
 docker-compose up
+
+# Iniciar todos los servicios en segundo plano
+docker-compose up -d
+
+# Detener servicios
+Si se iniciaron los servicios en primer plano, ubicarse en la consola en la que se iniciaron los servidores y hacer la combinación de teclas CTRL+C
 
 # Detener servicios
 docker-compose down
@@ -112,10 +133,10 @@ docker-compose down -v
 
 ### URLs de Acceso
 - **Frontend:** http://localhost:3000
-- **Frontend - Admin:** http://localhost:3000/admin admin@example.com admin123
+- **Frontend - Admin:** http://localhost:3000/admin *(user: admin@example.com, contraseña: admin123)*
 - **Backend API:** http://localhost:3001/api
 - **Health Check:** http://localhost:3001/health
-- **pgAdmin 4:** http://localhost:5050 (user: app_user, contraseña: app_password)
+- **pgAdmin 4:** http://localhost:5050 *(user: app_user, contraseña: app_password)*
 - **Base de datos:** http://localhost:5432 
 
 ---

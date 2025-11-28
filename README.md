@@ -134,9 +134,8 @@ docker-compose down -v
 ### URLs de Acceso
 - **Frontend:** http://localhost:3000
 - **Frontend - Admin:** http://localhost:3000/admin *(user: admin@example.com, contraseña: admin123)*
-- **Backend API:** http://localhost:3001/api
+- **Backend API (ejemplo de endpoint):** http://localhost:3001/api/packages
 - **Health Check:** http://localhost:3001/health
 - **pgAdmin 4:** http://localhost:5050 *(user: app_user, contraseña: app_password)*
-- **Base de datos:** http://localhost:5432 
 
 ---

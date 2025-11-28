@@ -1,76 +1,73 @@
-const { Package } = require('../models');
+const PackageFacade = require("../services/packages.facade");
 
-// obtener todos los paquetes
+// GET ALL
 exports.getAllPackages = async (req, res) => {
   try {
-    console.log('Llamada a getAllPackages');
-    const packages = await Package.findAll();
-    res.json(packages);
+    const packages = await PackageFacade.getAllPackages();
+    res.status(200).json(packages);
   } catch (error) {
-    console.error('Error al obtener paquetes:', error);
-    res.status(500).json({ message: 'Error al obtener paquetes' });
+    console.error("Error al obtener paquetes:", error);
+    res.status(500).json({ message: "Error al obtener paquetes" });
   }
 };
 
-
+// GET BY ID
 exports.getPackageById = async (req, res) => {
   try {
-    const pkg = await Package.findByPk(req.params.id);
-    if (!pkg) return res.status(404).json({ message: 'Paquete no encontrado' });
+    const pkg = await PackageFacade.getPackageById(req.params.id);
+    if (!pkg) return res.status(404).json({ message: "Paquete no encontrado" });
 
-    res.json(pkg);
+    res.status(200).json(pkg);
   } catch (error) {
-    console.error('Error al obtener paquete:', error);
-    res.status(500).json({ message: 'Error al obtener paquete' });
+    console.error("Error al obtener paquete:", error);
+    res.status(500).json({ message: "Error al obtener paquete" });
   }
 };
 
+// CREATE
 exports.createPackage = async (req, res) => {
   try {
-    const { title, description, location, price, image_url } = req.body;
-    const newPackage = await Package.create({ title, description, location, price, image_url });
+    const newPackage = await PackageFacade.createPackage(req.body);
 
-    
     res.status(201).json({
-      status: 'success',
-      message: 'Paquete creado exitosamente',
-      newpackage: newPackage
+      status: "success",
+      message: "Paquete creado exitosamente",
+      newPackage
     });
   } catch (error) {
-    console.error('Error al crear paquete:', error);
-    res.status(500).json({ message: 'Error al crear paquete' });
+    console.error("Error al crear paquete:", error);
+    res.status(500).json({ message: "Error al crear paquete" });
   }
 };
 
+// UPDATE
 exports.updatePackage = async (req, res) => {
   try {
-    const { title, description, location, price, image_url } = req.body;
-    const pkg = await Package.findByPk(req.params.id);
+    const updated = await PackageFacade.updatePackage(req.params.id, req.body);
 
-    if (!pkg) return res.status(404).json({ message: 'Paquete no encontrado' });
+    if (!updated) return res.status(404).json({ message: "Paquete no encontrado" });
 
-    await pkg.update({ title, description, location, price, image_url });
-    res.status(201).json({
-      status: 'success',
-      message: 'Paquete modificado exitosamente',
-      modificated: pkg
+    res.status(200).json({
+      status: "success",
+      message: "Paquete actualizado exitosamente",
+      updated
     });
   } catch (error) {
-    console.error('Error al actualizar paquete:', error);
-    res.status(500).json({ message: 'Error al actualizar paquete' });
+    console.error("Error al actualizar paquete:", error);
+    res.status(500).json({ message: "Error al actualizar paquete" });
   }
 };
 
+// DELETE
 exports.deletePackage = async (req, res) => {
   try {
-    const pkg = await Package.findByPk(req.params.id);
+    const deleted = await PackageFacade.deletePackage(req.params.id);
 
-    if (!pkg) return res.status(404).json({ message: 'Paquete no encontrado' });
+    if (!deleted) return res.status(404).json({ message: "Paquete no encontrado" });
 
-    await pkg.destroy();
-    res.json({ message: 'Paquete eliminado correctamente' });
+    res.status(200).json({ message: "Paquete eliminado correctamente" });
   } catch (error) {
-    console.error('Error al eliminar paquete:', error);
-    res.status(500).json({ message: 'Error al eliminar paquete' });
+    console.error("Error al eliminar paquete:", error);
+    res.status(500).json({ message: "Error al eliminar paquete" });
   }
 };

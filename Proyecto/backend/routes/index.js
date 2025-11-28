@@ -5,6 +5,7 @@ const packageController = require('../controllers/packages.controller');
 const reservationController = require('../controllers/reservations.controller');
 const adminController = require('../controllers/admin_users.controller');
 const { authenticateJWT } = require('../middleware/verifyToken.middleware');
+const pricesRoutes = require('./prices.routes');
 
 // Ruta de prueba
 router.get('/health', (req, res) => {
@@ -27,6 +28,9 @@ router.get('/test', (req, res) => {
     }
   });
 });
+
+router.use('/', pricesRoutes);
+
 
 // Rutas públicas
 router.get('/packages', packageController.getAllPackages);//anda

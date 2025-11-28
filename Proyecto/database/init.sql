@@ -46,6 +46,6 @@ CREATE TABLE admin_users (
 INSERT INTO admin_users (email, password_hash) VALUES ('admin@example.com', '$2a$10$KykYBBmQmmesQE76Sl/sgO/Quk3W8EJayRN7whDvKvtZ1q5Upvzc6');
 
 INSERT INTO packages (title, description, location, price, image_url) VALUES 
-('Bariloche Aventura', 'Disfruta de 5 días en Bariloche con excursiones de aventura incluidas.', 'Bariloche, Río Negro', 150000.00, 'https://example.com/bariloche.jpg'),
-('Ushuaia Extrema', 'Conoce el fin del mundo con este paquete de 7 días en Ushuaia.', 'Ushuaia, Tierra del Fuego', 200000.00, 'https://example.com/ushuaia.jpg'),
-('El Calafate Glaciares', 'Visita el Glaciar Perito Moreno y otras maravillas en 4 días.', 'El Calafate, Santa Cruz', 180000.00, 'https://example.com/calafate.jpg');
+('Bariloche Aventura', 'Disfruta de 5 días en Bariloche con excursiones de aventura incluidas.', 'Bariloche, Río Negro', 150000.00, 'https://content.skyscnr.com/m/2fd10a980985838e/original/GettyImages-178737180.jpg?resize=1224%3Aauto'),
+('Ushuaia Extrema', 'Conoce el fin del mundo con este paquete de 7 días en Ushuaia.', 'Ushuaia, Tierra del Fuego', 200000.00, 'https://media.staticontent.com/media/pictures/f848b417-6e06-4b1f-b88d-1f54e5c4a952'),
+('El Calafate Glaciares', 'Visita el Glaciar Perito Moreno y otras maravillas en 4 días.', 'El Calafate, Santa Cruz', 180000.00, 'https://esplendorelcalafate.com/wp-content/uploads/2023/10/parque-glaciares.webp');

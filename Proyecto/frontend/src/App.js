@@ -12,6 +12,7 @@ import Login from "./pages/admin/Login"
 import AdminDashboard from "./pages/admin/AdminDashboard"
 import AdminPaquete from "./pages/admin/AdminPaquete"
 import AdminReservacion from "./pages/admin/AdminReservacion"
+import AdminPriceUpdate from "./pages/admin/AdminPriceUpdate"
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/paquetes" element={<AdminPaquete />} />
           <Route path="/admin/reservaciones" element={<AdminReservacion />} />
+          <Route path="/admin/precios" element={<AdminPriceUpdate />} />
         </Routes>
       </div>
     </Router>
